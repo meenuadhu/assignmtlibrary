@@ -1,0 +1,24 @@
+<form action="/createPost" method="Post" enctype="multipart/form-data">
+    <div class="group">
+        <h3>Add new book</h3>
+    </div>
+    <div class="group">
+        <label for="title">Book Title</label>
+        <input type="text" name="title" id="title" class="control" placeholder="Title" value="<%= input_title %>">
+    </div>
+    <div class="group">
+        <label for="title">Book Author</label>
+        <input type="text" name="author" id="author" class="control" placeholder="Author" value="<%= input_author %>">
+    </div>
+    <div class="group">
+        <label for="body">Book Details</label>
+        <textarea name="body" id="body" class="control" cols="10" rows="5"><%= body %></textarea>
+    </div>
+    <div class="group">
+        <label for="imageLabel" class="fileLabel">Upload image</label>
+        <input type="file" name="image" id="imageLabel">
+    </div>
+    <div class="group">
+        <input type="submit" value="Add Book" class="btn btn-sweet">
+    </div>
+</form>

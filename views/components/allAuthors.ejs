@@ -1,0 +1,63 @@
+<div class="msg">
+    <div class="container"><% if(locals.message.success) { %> <div class="alert-success"><%= message.success %>
+        </div>
+        <% } %>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <% if(authors.length > 0 ) { %>
+        <% authors.forEach((post) => {  %>
+        <div class="col-3 p-20">
+            <div class="post">
+                <div class="postImg">
+                    <img src="/assets/img/<%= authors.image1 %>" alt="">
+                </div>
+                <div class="postTitle">
+                    <h4><a href="/details/<%= authors._id %>"><%= post.title.slice(0, 30) %>...</a></h4>
+                </div>
+                
+                <div class="postBody">
+                    <%= authors.body.slice(0, 90) %>...
+                </div>
+                <div class="postFooter">
+                    <!-- <span class="creator"><%= post.userName %></span> -->
+                    <span class="postTime"><%= formate(authors.updatedAt, "d,mmmm, yyyy") %></span>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+        <% } else { %>
+        <p>No Authors in the database</p>
+        <% } %>
+    </div>
+
+    <% 
+    let totalPages = Math.ceil(count1/perPage1);
+    let startLoop =  currentPage1;
+    let diff = totalPages - currentPage1;
+    if(diff <= 4){
+        startLoop = totalPages - 4;
+    }
+    let endLoop = parseInt(startLoop) + 4;
+    if(startLoop <= 0 ){
+        startLoop = 1;
+    }
+    %>
+    <% if(count1 > 4 && authors.length !== 0){ %>
+    <div class="pagination">
+        <ul>
+            <% if(currentPage1 > 1) { %>
+            <li><a href="/authors/<%= currentPage1 - 1%>" class="prev">Prev</a></li>
+            <% } %>
+            <% for(let i = startLoop; i <= endLoop; i++){ let active = i == currentPage1 ? 'active' : '' %>
+            <li><a href="/authors/<%= i %>" class="<%= active %>"><%= i %></a></li>
+            <% } %>
+            <% if(currentPage1 < totalPages){ %>
+            <li><a href="/authors/<%= parseInt(currentPage1) + 1%>" class="prev">Next</a></li>
+            <% } %>
+        </ul>
+    </div>
+    <% } %>
+
+</div>

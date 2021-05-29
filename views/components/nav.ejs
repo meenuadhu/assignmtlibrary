@@ -1,0 +1,23 @@
+<nav class="nav">
+    <ul class="left-nav">
+        <li><a href="/">Home</a></li>
+        <% if(login) { %>
+        <li><a href="/createPost">Add Book</a></li>
+        <li><a href="/posts/1">Books</a></li>
+        <li><a href="/createPost">Add Author</a></li>
+        <li><a href="/posts/1">Authors</a></li>
+
+        <!-- <li><a href="/createauthor">Add Author</a></li>
+        <li><a href="/authors/1">Authors</a></li> -->
+        <% } %>
+
+    </ul>
+    <ul class="right-nav">
+        <% if(login) { %>
+        <li><a href="/logout">Logout</a></li>
+        <% } else { %>
+        <li><a href="/">Register</a></li>
+        <li><a href="/login">Login</a></li>
+        <% } %>
+    </ul>
+</nav>
